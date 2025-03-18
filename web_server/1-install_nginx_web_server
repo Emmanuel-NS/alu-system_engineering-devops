@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Update package list and install nginx
+apt-get update -y
+apt-get install nginx -y
+
+# Ensure Nginx is running
+service nginx start
+
+# Create custom HTML page with "Holberton School for the win!"
+echo 'Holberton School for the win!' > /var/www/html/index.html
+
+# Allow traffic on port 80
+ufw allow 80/tcp
+
+# Restart Nginx (without using systemctl)
+/etc/init.d/nginx restart
