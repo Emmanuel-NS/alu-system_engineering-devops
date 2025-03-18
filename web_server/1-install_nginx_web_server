@@ -13,4 +13,4 @@ echo 'Holberton School for the win!' > /var/www/html/index.html
 ufw allow 80/tcp
 
 # Restart Nginx (without using systemctl)
-/etc/init.d/nginx restart
+service nginx restart
