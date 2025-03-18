@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-# Update package list and install nginx
-apt-get update -y
-apt-get install nginx -y
+# Script to install and configure Nginx web server
 
-# Ensure Nginx is running
-service nginx start
+# Update package lists
+apt-get update
 
-# Create custom HTML page with "Holberton School for the win!"
-echo 'Holberton School for the win!' > /var/www/html/index.html
+# Install Nginx with -y flag to auto-confirm
+apt-get install -y nginx
 
-# Allow traffic on port 80
-ufw allow 80/tcp
+# Configure Nginx to listen on port 80 (default)
+# This is already the default configuration, but we'll ensure it's correct
+
+# Create a simple HTML page containing "Holberton School"
+echo "Holberton School" > /var/www/html/index.html
+
+# Check if Nginx configuration is valid
+nginx -t
 
 # Restart Nginx (without using systemctl)
 service nginx restart
+
+exit 0
